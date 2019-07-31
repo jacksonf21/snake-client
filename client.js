@@ -13,14 +13,30 @@ const connect = function() {
 
     //send name credentials
     conn.write('Name: JKF');
+
+    //up key
+    function upKey() {
+      setTimeout(() => {
+        conn.write('Move: up');
+        upKey();
+      }, 50);
+    };
+
+    //down key
+    function upKey() {
+      setTimeout(() => {
+        conn.write('Move: down');
+        upKey();
+      }, 50);
+    };
+
   })
 
   //listens to server responses
   conn.on('data', (data) => {
     console.log('Server says: ', data);
+    process.exit();
   })
-
-
 
   return conn;
 };
